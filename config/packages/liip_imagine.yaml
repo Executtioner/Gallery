@@ -1,0 +1,11 @@
+liip_imagine:
+  driver: "gd"
+  filter_sets:
+    original:
+      filters:
+        riginal_size_filter: ~
+    thumbnail:
+      jpeg_quality:          85
+      png_compression_level: 8
+      filters:
+        thumbnail: {size: [150, 200], mode: outbound, allow_upscale: true }

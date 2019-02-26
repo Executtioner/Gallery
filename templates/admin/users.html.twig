@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gallery{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+    <h1>Administracion de Usuarios</h1>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id Usuario</th>
+                <th>Email</th>
+                <th>Estado</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    {% if user.isActive !=true %}
+                        <span class="badge badge-danger">Inactivo</span>
+                    {% else %}
+                        <span class="badge badge-success">Activo</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user.isActive !=true %}<a class="btn btn-primary" href="">Activar Usuario</a>
+                    {% else %}
+                    <a class="btn btn-primary" href="">Desactivar Usuario</a>
+                    {% endif %}
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('post_new') }}">Create new</a>
+    </div>
+{% endblock %}
+
